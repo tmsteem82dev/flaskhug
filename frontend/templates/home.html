@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Testing flask and Hug</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css">
@@ -14,11 +15,30 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/fileUploadService.js"></script>
+    <script src="js/testController.js"></script>
+    <script src="js/uploadDirective.js"></script>
 
 </head>
-<body ng-app="testApp">
-    <h1>Welcome to the home page!</h1>
 
-    
+<body ng-app="testApp">
+    <div class="container" ng-controller="TestController">
+        <h1>Welcome to the home page!</h1>
+        <form>
+           <div class="form-group">
+                <label for="fileupload">Select a file to upload</label>
+                <input type="file" class="form-control" name="file" id="fileupload" file-model="myFile" aria-describedby="uploadHelp" required>                
+                <small id="uploadHelp" class="form-text text-muted">We'll encrypt your file and stuff!</small>                
+           </div>
+           <div>
+               <label for "filedescription">Add an optional description:</label>
+               <input type="text" class="form-control" name="filedescription" ng-model="filedescription" required>
+           </div>
+           <button ng-click="uploadFile()">Upload</button>
+        </form>
+
+    </div>
+
 </body>
+
 </html>
