@@ -17,7 +17,30 @@ app.service("fileUploadService",function($http){
         });
     };
 
+    var resizedImageUpload = function(fd){
+        return $http.post("http://localhost:5000/uploader/image",fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined}
+        })
+        .then(function(response){
+            return response.data;
+        });
+    };
+
+    var emailerSend = function(fd){
+        return $http.post("http://localhost:5000/emailer/send", fd, {
+            transformRequest: angular.identity,
+            headers: {'Content-Type': undefined} 
+        }
+        )
+        .then(function(response){
+            return response.data;
+        });
+    };
+
     return {
-        fileUpload : fileUpload
+        fileUpload : fileUpload,
+        resizedImageUpload: resizedImageUpload,
+        emailerSend: emailerSend
     };
 });

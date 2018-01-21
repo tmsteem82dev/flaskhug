@@ -1,2 +1,6 @@
 .idea 
 backend/__psycache__/ 
+*.pyc
+frontend/someimg.jpg
+frontend/someimg.png
+frontend/outgoing.msg
