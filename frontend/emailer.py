@@ -85,16 +85,16 @@ Please visit us <a href="http://www.mysite.com">online</a>! """
 
 
 def email_test():
-    title = 'A different picture report'
+    title = 'More picture reports'
     path = Path('someimg.png')
     #me = Address("Pepé Le Pew", *gmail_user.rsplit('@', 1))
 
     msg = EmailMessage()
-    msg['Subject'] = 'Report…'
+    msg['Subject'] = 'Picture email!'
     msg['From'] = USERNAME
     msg['To'] = "tmsteem82@gmail.com"
     msg.set_content('[image: {title}]'.format(title=title))  # text/plain
-    cid = make_msgid()[1:-1]  # strip <>
+    cid = 1 #make_msgid()[1:-1]  # strip <>
     msg.add_alternative(  # text/html
         '<div>This is a random title</div><div><img src="cid:{cid}" alt="{alt}"/></div>'
             .format(cid=cid, alt=html.escape(title, quote=True)),
