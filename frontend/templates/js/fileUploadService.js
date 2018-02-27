@@ -28,7 +28,7 @@ app.service("fileUploadService",function($http){
     };
 
     var emailerSend = function(fd){
-        return $http.post("http://localhost:5000/emailer/send", fd, {
+        return $http.post("http://localhost:5000/emailer/sendyag", fd, {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined} 
         }

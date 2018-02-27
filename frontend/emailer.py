@@ -4,6 +4,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 
+import yagmail
+
 
 import html
 import mimetypes
@@ -12,6 +14,14 @@ from email.headerregistry import Address
 from email.message import EmailMessage
 from email.utils import make_msgid
 from pathlib import Path
+
+def yagmail_test(to_address, msg_body, image_path):
+    yag = yagmail.SMTP(USERNAME, PASSWORD)
+    #yag.send(to_address, contents=[yagmail.inline("someimg.png"), "<h1>This is a test</h1>","This is some text as well"])
+    yag.send(to_address,
+             contents=[yagmail.inline(image_path), "<h1>This is a test</h1>", "This is some text as well"])
+
+
 
 def email_attached_img(to_address, msg_body, image_path, img_id):
     server = smtplib.SMTP("smtp.gmail.com:587")

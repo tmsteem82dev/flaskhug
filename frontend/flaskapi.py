@@ -20,7 +20,7 @@ def upload_file():
         data = {"file_description": request.form["description"],
                 "file_name": request.files['file'].filename}
 
-        response = requests.post("http://localhost:8000/upload",files=file,data=data)
+        response = requests.post("http://localhost:8000/upload", files=file, data=data)
         return jsonify(response)
 
     return "BAD"
@@ -63,6 +63,15 @@ def email_message():
             f.close()
 
         emailer.email_attached_img("tmsteem82@gmail.com", html_body, filename, img_id)
+
+    return "OK"
+
+@app.route("/emailer/sendyag", methods=["POST"])
+def email_yag():
+    if request.method == "POST":
+        raw_img_data = request.form["image_data"]
+
+        emailer.yagmail_test("tmsteem82@gmail.com", "", raw_img_data)
 
     return "OK"
 
